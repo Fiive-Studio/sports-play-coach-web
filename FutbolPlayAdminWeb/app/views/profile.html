@@ -1,0 +1,32 @@
+﻿<div ng-include src="'app/views/menu.html'"></div>
+<div>
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 boxContainerForDiv">
+            <p class="text-center" style="font-size:30px; font-weight:bold"><font color="#00bc55"><a class="fa fa-user"></a> Actualiza tu perfil</font></p>
+            <div class="form-group">
+                <label class="control-label" for="focusedInput">Nombre</label>
+                <input class="form-control" ng-model="updatedata.name" type="text">
+            </div>
+
+            <div class="form-group">
+                <label class="control-label" for="focusedInput">Correo de acceso</label>
+                <input class="form-control" ng-model="updatedata.email" type="text">
+            </div>
+
+            <div class="alert alert-info" ng-show="loading">Estamos actualizando tus datos...</div>
+            <div class="form-group">
+                <button id="updateData" class="btn btn-block btn-info" ng-click="update()">Actualizar Datos</button>
+            </div>
+            <div class="clearfix"></div>
+            <br />
+            <div data-ng-hide="message == ''" class="alert alert-success">
+                {{message}}
+            </div>
+            <div class="clearfix"></div>
+            <label><a class="btn btn-default btn-sm" href="#/change-password">Cambiar contraseña</a></label>
+            <br />
+        </div>
+    </div>
+</div>
+<div ng-include src="'app/views/foter.html'"></div>

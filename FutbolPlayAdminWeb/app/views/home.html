@@ -1,0 +1,78 @@
+﻿<div class="slide-animate-container" ng-include src="'app/views/menu.html'"></div>
+<div class="boxContainer">
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h4><strong><a style="font-size: 35px" class="fa fa-hand-peace-o "></a> Hola! <font color="#00bc55">{{authentication.userName}}</font></strong></h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <h2><strong><a class="fa fa-tachometer"></a> Dash<font color="#00bc55">board</font></strong></h2>
+        </div>
+        <div class="col-lg-2 text-left">
+            <h3><strong><a class="fa fa-calendar"></a> Mes: <font color="#00bc55">{{Month}}</font></strong></h3>
+        </div>
+        <div class="col-lg-2  text-left">
+            <h3><strong>Año: <font color="#00bc55">{{Year}}</font></strong></h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h4><a class="fa fa-futbol-o"></a> Gracias por confiar en Sports Play!... Estos son tus números para el Mes y Año en curso.</h4>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <h5>Pasa el curso de tu mouse sobre la grafica para ver los numeros</h5>
+            <br />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">TOTAL DE RESERVAS POR ESTADO</h3>
+                </div>
+                <div class="panel-body">
+                    Valor expresado en cantidad de reservas
+                    <br />
+                    <br />
+                    <canvas id="doughnut" class="chart chart-pie"
+                            chart-data="CantidadEstadoReserva" chart-labels="EstadoReserva"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">TOTAL DE INGRESOS POR ESTADO</h3>
+                </div>
+                <div class="panel-body">
+                    Valor expresado en miles de pesos COP
+                    <br />
+                    <br />
+                    <canvas id="bar" class="chart chart-bar"
+                            chart-data="IngresosReservaBarra" chart-labels="EstadoReservaBarra" chart-series="MesesBarra"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12"><a class="fa fa-edit"></a> Muy pronto sabras cuales son tus mejores clientes y quienes debemos volver a conquistar!. Seguimos trabajando para ti.</div>
+        <br />
+        <br />
+        <div class="col-md-6">
+            <h4>¡Encuentranos ahora en Google Play!</h4>
+            <a href="https://play.google.com/store/apps/details?id=fiive.futbolplaycoach" target="_blank"><img src="../../images/googleplay.png" width="20%" /></a><a href="https://itunes.apple.com/co/app/sp-coach/id1173650411?l=en&mt=8" target="_blank"><img src="../../images/applestore.png" width="23%" /></a>
+        </div>
+        <div class="col-md-6 text-right">
+            <h3 style="text-align:center; margin:20px 0px;"><strong>Linea de Soporte y Ayuda:<br /><a class="glyphicon glyphicon-phone"></a> 57+ 000 0000000</strong></h3>
+        </div>
+    </div>
+    <br />
+</div>
+<div ng-include src="'app/views/foter.html'"></div>

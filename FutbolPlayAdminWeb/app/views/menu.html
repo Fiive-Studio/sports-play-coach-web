@@ -1,0 +1,143 @@
+﻿<div id="Menu" ng-controller="notificationController">
+    <nav class="navbar navbar-inverse navbar-fixed-top" ng-hide="!authentication.isAuth">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Sports Play Coach</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href=""><i class="fa pull-right"></i> Bienvenid@ {{authentication.userName}}</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="" data-ng-click="logOut()"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesion</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#/help" style="color: #ffffff">Ayuda</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Configuración <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <!--<li><a href="#/scheduler">Programacion</a></li>
+                            <li><a href="#">Canchas</a></li>
+                            <li><a href="#">Parametros</a></li>-->
+                            <li><a href="#/profile">Mi Perfil</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#/users">Clientes</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reservas <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#/reservation">Simples</a></li>
+                            <li><a href="#/reservationmultiple">Multiples</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#/cancelreservation">Reservas Canceladas</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#/home"><i class="fa pull-right"></i>Inicio</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="notification_li" ng-mouseleave="">
+                        <span id="notification_count">{{cantPendingReservations}}</span>
+                        <a href="" ng-click="showNotifications()" id="notificationLink">
+                            <i class="fa fa-bell" style="font-size:20px" />
+                        </a>
+                        <div id="notificationContainer" ng-show="isPopupVisible">
+                            <div id="notificationTitle">Reservas pendientes</div>
+                            <div id="notificationsBody" class="notifications">
+                                <ul>
+                                    <li ng-hide="notifications.length">No tienes notificaciones pendientes.</li>
+                                    <li id="notificationDetail" ng-repeat="notification in notifications">
+                                        <a href="" ng-click="showNotification(notification)">
+                                            <hr />
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <span class="fa fa-futbol-o"></span><strong> {{notification.pitch_description}} </strong>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <span class="fa fa-user"></span><strong> Usuario:</strong>   {{notification.name_user}}
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <span class="fa fa-calendar"></span><strong> Fecha: </strong>{{notification.date | strLimit: 10}}
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <span class="fa fa-clock-o"></span><strong> Hora: </strong>{{notification.hour}}
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <span class="fa fa-phone"></span><strong> Celular: </strong>{{notification.phone_user}}
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>   
+            </div>
+        </div>
+    </nav>
+
+    <!--modal para las reservas-->
+    <div class="modal fade" id="VerDetalleNotificacion" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h2 class="modal-title text-center" id="myModalLabel"><a class="fa fa-calendar"> </a> Detalles de la Reserva</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4><a class="fa fa-futbol-o"></a><strong>   {{CanchaNotification}}</strong></h4>
+                                </div>
+                                <div class="col-sm-8">
+                                    <h4><a class="fa fa-tag"></a>   N° Reserva: <strong>{{reservaNotification}}</strong></h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4><a class="fa fa-user"></a> Usuario: <strong>{{nombreNotification}}</strong></h4>
+                                    <h4><a class="fa fa-phone"></a> Telefono: <strong>{{celularNotification}}</strong></h4>
+                                    <h4><a class="fa fa-clock-o"></a> Hora: <strong>{{horaNotification}}</strong></h4>
+                                    <h4><a class="fa fa-calendar-check-o"></a> Fecha: <strong>{{fechaNotification}}</strong></h4>
+                                    <h4><a class="fa fa-money"></a> Valor: <strong>{{valorNotification}}</strong></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <button id="closeDetail" type="button" ng-click="limpiarVerDetalleNotification()" class="btn btn-info" data-dismiss="modal">Cerrar</button>
+                            <button id="confirmNotification" type="button" ng-click="confirmReservation()" class="btn btn-success" data-dismiss="modal">Confirmar</button>
+                            <button id="cancelNotification" type="button" ng-click="cancelReservation()" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

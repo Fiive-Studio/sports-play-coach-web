@@ -1,0 +1,185 @@
+﻿<div class="slide-animate-container help-page" ng-include src="'app/views/menu.html'"></div>
+<div>
+    <div class="row">
+        <div class="col-md-9 contenidoHelp">
+            <section>
+                <span id="autenticacion" class="anchors"></span>
+                <h1><i class="fa fa-key"></i>  Autenticación</h1>
+                <ol>
+                    <li>Para iniciar sesión ingrese a <a href="coach.sportsplay-app.com/" target="_blank">coach.sportsplay-app.com/</a></li>
+                    <li>Ingrese en usuario el e-mail asignado a su establecimiento y la contraseña</li>
+                    <li>De clic en el botón <strong>Empecemos!</strong></li>
+                </ol>
+            </section>
+
+            <section>
+                <span id="inicio" class="anchors"></span>
+                <h1><i class="fa fa-home"></i>  Página de Inicio</h1>
+                <p>Si el correo y la contraseña son correctos, será redireccionado a la pagina de inicio de Futbol Play Coach.</p>
+                <p>En esta página encontrará el menú de navegación en la parte superior y las últimas noticias relacionadas con la gestión de la aplicación Futbol Play Coach.</p>
+
+            </section>
+
+            <section>
+                <span id="navegacion" class="anchors"></span>
+                <h1><i class="fa fa-navicon"></i>  Menú de Navegación</h1>
+                <p>En el menú de navegación tiene las siguientes opciones</p>
+                <ul>
+                    <li><i class="fa fa-home"></i>  <strong>Inicio :</strong> Muestra la página principal</li>
+                    <li><i class="fa fa-flag-o"></i>  <strong>Reservas:</strong> Le permite gestionar reservar sencillas y múltiples</li>
+                    <li><i class="fa fa-wrench"></i>  <strong>Configuración:</strong> Muestra los datos de su perfil y le permite cambiar la contraseña</li>
+                    <li><i class="fa fa-close"></i>  <strong>Cerrar sesión:</strong> Termina la sesión y para ingresar nuevamente debe seguir los pasos de autenticación</li>
+                </ul>
+
+            </section>
+
+            <section>
+                <span id="reservas" class="anchors"></span>
+                <h1><i class="fa fa-flag-o"></i>  Menú de Reservas</h1>
+                <p>Para realizar un reserva, diríjase al menú <i class="fa fa-flag-o"></i>  <strong>Reservas</strong> y seleccione el tipo de reserva que desea realizar (normal o múltiple*)</p>
+                <p>* Si su establecimiento no cuenta con canchas múltiples, al momento de seleccionar la opción no le mostrará nada</p>
+
+
+            </section>
+
+            <section>
+                <span id="reservanormal" class="anchors"></span>
+                <h1><i class="fa fa-flag-o"></i>  Reserva Normal</h1>
+                <p>Para realizar un reserva normal seleccione la opción en el menú <i class="fa fa-flag-o"></i>  <strong>Reservas</strong></p>
+                <p><strong>Nota:</strong> Le aparecerán la cantidad de canchas que haya en su establecimiento.</p>
+                <ol>
+                    <li>Seleccione la cancha y el horario en el que desea realzar la reserva.</li>
+                    <li>Ingrese los datos del Cliente: Nombre, Celular, Correo... y luego haga clic en el botón <strong>Reservar</strong></li>
+                    <li>Cuando complete el proceso, el estado de la cancha cambiará.</li>
+                    <li>Haga clic en el botón <strong>Guardar Estado</strong> para guardar los cambios.</li>
+                </ol>
+            </section>
+
+            <section>
+                <span id="reservamultiple" class="anchors"></span>
+                <h1><i class="fa fa-flag-o"></i>  Reserva Múltiple</h1>
+                <p>Para realizar un reserva múltiple seleccione la opción en el menú <i class="fa fa-flag-o"></i>  <strong>Reservas</strong></p>
+                <p><strong>Nota:</strong> Le aparecerán la cantidad de canchas que haya en su establecimiento.</p>
+                <ol>
+                    <li>Seleccione la cancha y el horario en el que desea realzar la reserva.</li>
+                    <li>Ingrese los datos del Cliente: Nombre, Celular, Correo... y luego haga clic en el botón <strong>Reservar</strong></li>
+                    <li>Cuando complete el proceso, el estado de la cancha cambiará.</li>
+                    <li>Al momento de realizar una reserva múltiple, las canchas que conforman la múltiple no estarán disponibles en reservas normales</li>
+                    <li>Haga clic en el botón <strong>Guardar Estado</strong> para guardar los cambios.</li>
+                </ol>
+            </section>
+
+            <section>
+                <span id="cancelreservation" class="anchors"></span>
+                <h1><i class="fa fa-list-ol"></i>  Listado de Reservas Canceladas</h1>
+                <p>Para consultar el listado de reservas canceladas seleccione la opción en el menú <i class="fa fa-list-ol"></i>  <strong>Reservas - Reservas Canceladas</strong></p>
+                <p><strong>Nota:</strong> Le aparecerán las ultimas 15 reservas canceladas.</p>
+                <p>Tambien podra descargar el Listado de Reservas Canceladas si desea hacerlo.</p>
+            </section>
+
+            <section>
+                <span id="estadoreservas" class="anchors"></span>
+                <h1><i class="fa fa-check-circle"></i>  Estado de las Reservas</h1>
+                <p>Al momento de realizar una reserva, estas se van a diferenciar por su estado:</p>
+                <ul>
+                    <li><div class="estadoTexto estadoDisponible">Disponible</div> La cancha está disponible para hacer reserva.</li>
+                    <li><div class="estadoTexto estadoPendiente">Pendiente por confirmar</div> Se hizo una reserva previamente y está pendiente por confirmar.</li>
+                    <li><div class="estadoTexto estadoConfirmada">Confirmada</div> La reserva se confirmó por parte del establecimiento.</li>
+                    <li><div class="estadoTexto estadoEntregada">Entregada</div> La cancha se entregó al cliente y está en uso.</li>
+                    <li><div class="estadoTexto estadoFinalizada">Finalizada</div> El tiempo de reserva terminó y el cliente entregó los implementos.</li>
+                    <li><div class="estadoTexto estadoReservaNormal">Reserva Normal</div> La cancha no está disponible para hacer una reserva normal porque previamente se hizo una reserva en una cancha multiple.</li>
+                    <li><div class="estadoTexto estadoReservaMultiple">Reserva Multiple</div> La cancha no está disponible para hacer una reserva múltiple porque previamente se hizo una reserva en una cancha normal.</li>
+                </ul>
+            </section>
+
+            <section>
+                <span id="cambiarestado" class="anchors"></span>
+                <h1><i class="fa fa-cog"></i>  Cambiar estado de una reserva</h1>
+                <ol>
+                    <li>Haga clic sobre la reserva a la cual desea cambiar el estado.</li>
+                    <li>Seleccione el nuevo estado y de clic en <strong>Guardar Estado</strong>.</li>
+                    <li>Al finalizar, la reserva cambiará el estado por el asignado.</li>
+                </ol>
+            </section>
+
+            <section>
+                <span id="perfil" class="anchors"></span>
+                <h1><i class="fa fa-user"></i>  Mi Perfil</h1>
+                <p>Para cambiar los datos del perfíl del establecimiento:</p>
+                <ol>
+                    <li>Diríjase al menú Configuración > Mi Perfil</li>
+                </ol>
+            </section>
+
+            <section>
+                <span id="clientes" class="anchors"></span>
+                <h1><i class="fa fa-user"></i>  Clientes</h1>
+                <p>Para cambiar los datos de los clientes registrados:</p>
+                <ol>
+                    <li>Diríjase al menú Configuración > Clientes.</li>
+                    <li>Identifique el cliente que desea cambiar y haga clic en el icono <button class="btn-primary btn-sm"><span class="fa fa-pencil" href=""></span></button></li>
+                    <li>Ingrese los nuevos datos del cliente y guarde.</li>
+                    <li>Si el proceso se completa exitosamente, aparecerá un mensaje confirmando el cambio de contraseña.</li>
+                </ol>
+                <p><strong>Nota:</strong> Podra descargar su listado de clientes si asi lo desea.</p>
+            </section>
+
+            <section>
+                <span id="actualizar" class="anchors"></span>
+                <h1><i class="fa fa-user"></i>  Actualizar Datos</h1>
+                <ol>
+                    <li>Ingrese los nuevos datos como Nombre, Correo de acceso</li>
+                    <li>Haga clic en <strong>Actualizar datos</strong></li>
+                    <li>Si los datos ingresados son correctos le aparecerá un mensaje de confirmación.</li>
+                </ol>
+            </section>
+
+            <section>
+                <span id="contrasena" class="anchors"></span>
+                <h1><i class="fa fa-lock"></i>  Cambiar Contraseña</h1>
+                <p>Para modificar la contraseña:</p>
+                <ol>
+                    <li>Diríjase al menú Configuración > Mi Perfil</li>
+                    <li>Haga clic en <strong>Cambiar contraseña</strong></li>
+                    <li>Ingrese su contraseña actual, la nueva y la confirmación en sus respectivos campos.</li>
+                    <li>Si el proceso se completa exitosamente, aparecerá un mensaje confirmando el cambio de contraseña.</li>
+                </ol>
+            </section>
+
+            <section>
+                <span id="recuperarcontra" class="anchors"></span>
+                <h1><i class="fa fa-lock"></i>  Recuperar Contraseña</h1>
+                <p>Si al momento de iniciar sesión no recuerda su contraseña:</p>
+                <ol>
+                    <li>Clic en la opción <strong>Upss! Olvidaste tu contraseña?</strong></li>
+                    <li>Ingrese el correo electrónico asignado a su establecimiento y de clic en <strong>Enviar Correo</strong>.</li>
+                    <li>Vaya a la bandeja de entrada de su correo electrónico.</li>
+                    <li>Ingrese al correo electrónico recibido.</li>
+                    <li>Nota: La contraseña asignada es temporal, por lo que se recomienda cambiarla al momento de ingresar a su cuenta.</li>
+                </ol>
+            </section>
+
+        </div>
+        <div class="col-md-3">
+            <nav class="sidebar hidden-print hidden-sm hidden-xs affix">
+                <ul>
+                    <li><a ng-click="scrollTo('autenticacion')">Autenticación</a></li>
+                    <li><a ng-click="scrollTo('inicio')">Página de Inicio</a></li>
+                    <li><a ng-click="scrollTo('navegacion')">Menú de Navegación</a></li>
+                    <li><a ng-click="scrollTo('reservas')">Menú de Reservas</a></li>
+                    <li><a ng-click="scrollTo('reservanormal')">Reserva Normal</a></li>
+                    <li><a ng-click="scrollTo('reservamultiple')">Reserva Múltiple</a></li>
+                    <li><a ng-click="scrollTo('cancelreservation')">Listado de Reservas Canceladas</a></li>
+                    <li><a ng-click="scrollTo('estadoreservas')">Estado de las Reservas</a></li>
+                    <li><a ng-click="scrollTo('cambiarestado')">Cambiar estado de una reserva</a></li>
+                    <li><a ng-click="scrollTo('perfil')">Mi Perfil</a></li>
+                    <li><a ng-click="scrollTo('clientes')">Clientes</a></li>
+                    <li><a ng-click="scrollTo('actualizar')">Actualizar Datos</a></li>
+                    <li><a ng-click="scrollTo('contrasena')">Cambiar Contraseña</a></li>
+                    <li><a ng-click="scrollTo('recuperarcontra')">Recuperar Contraseña</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,121 @@
+﻿#notification_li {
+    position: relative;
+}
+
+    #notification_li > li {
+        float: left;
+        margin-right: 20px;
+        font-weight: bold;
+    }
+
+    #notification_li li a {
+        color: #333333;
+        text-decoration: none;
+        display: block;
+    }
+
+        #notification_li li a:hover {
+            background-color: #15c163;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+#notificationContainer {
+    background-color: #fff;
+    border: 1px solid rgba(100, 100, 100, .4);
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    overflow: scroll;
+    overflow-x: hidden;
+    position: absolute;
+    top: 80px;
+    margin-left: -180px;
+    width: 500px;
+    height: auto;
+    max-height: 300px;
+    z-index: -1;
+    display: none;
+    padding: 8px;
+    box-sizing: content-box;
+    border-top: 5px solid #15c163;
+}
+
+    #notificationContainer:before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        color: transparent;
+        border: 10px solid black;
+        border-color: transparent transparent white;
+        margin-top: -20px;
+        margin-left: 188px;
+    }
+
+#notificationTitle {
+    color: #15c163;
+    font-size: 15px;
+    vertical-align: middle;
+    font-weight: bold;
+    padding: 8px;
+    background-color: #ffffff;
+    position: absolute;
+    z-index: 1000;
+    width: 384px;
+}
+
+#notificationsBody {
+    padding: 20px 0px 0px 0px !important;
+}
+
+#notificationDetail {
+    width: 490px;
+    font-size: 12px;
+    margin-left: -33px;
+}
+
+#notificationFooter {
+    background-color: #e9eaed;
+    text-align: center;
+    font-weight: bold;
+    padding: 8px;
+    font-size: 8px;
+    border-top: 1px solid #dddddd;
+}
+
+#notification_count {
+    padding: 0.1px 8px 0.1px 8px;
+    background: #cc0000;
+    color: #ffffff;
+    font-weight: bold;
+    margin-left: 25px;
+    border-radius: 9px;
+    -moz-border-radius: 9px;
+    -webkit-border-radius: 9px;
+    position: absolute;
+    margin-top: 10px;
+    font-size: 10px;
+}
+
+.notifications ul {
+    list-style-type: none;
+    display: inline-block;
+}
+
+    .notifications ul li {
+        display: block;
+        padding: 4px;
+    }
+
+@media (max-device-width: 480px) {
+
+    div#notificationContainer {
+        position: relative !important;
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+        margin-top: 0;
+        top: 0;
+        max-height: 300px;
+    }
+}

@@ -1,0 +1,239 @@
+﻿<div ng-include src="'app/views/menu.html'"></div>
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2><strong><a class="fa fa-flag-o"></a> Reservas</strong></h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <a class="fa fa-calendar" style="font-size:30px" /><strong style="font-size:20px"> Fecha de Consulta:<b style="font-size:18px;font-weight:200"> {{dateDisplay}}</b></strong>
+        </div>
+        <div class="col-md-2">
+            <div class="dropdown">
+                <a class="dropdown-toggle my-toggle-select" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="">
+                    <div class="input-append">
+                        <input type="text" class="input-sm" data-date-time-input="YYYY-MM-DD" data-ng-model="data.date" placeholder="Cambiar Fecha">
+                    </div>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <datetimepicker data-ng-model="data.date"
+                                    data-on-set-time="onTimeSet(newDate, oldDate)"
+                                    data-before-render="beforeRender($dates)"
+                                    data-datetimepicker-config="{ dropdownSelector: '.my-toggle-select', startView:'day', minView:'day'  }"></datetimepicker>
+                </ul>
+                <br />
+            </div>
+        </div>
+        <div class="col-md-5 text-right">
+            <button type="button" ng-click="reaload()" class="btn btn-sm btn-default">
+                <span class="glyphicon glyphicon-refresh"></span> Actualizar
+            </button>
+        </div>
+    </div>
+
+    <div class="alert alert-info" ng-show="loading">Esperanos un momento, Arnoldo esta trabajando...</div>
+    <div class="container" id="tableScheduler">
+        <div class="row">
+            <div id="no-more-tables">
+                <table class="col-sm-12 table-bordered table-striped table-condensed cf">
+                    <thead class="cf">
+                        <tr>
+                            <th>Horarios</th>
+                            <th ng-repeat="Pitch in Pitchs">{{Pitch.description}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in Place">
+                            <td>{{item.hour}}</td>
+                            <td data-title="{{getNamePitch(Pitch.id_pitch)}}" ng-repeat="Pitch in item.pitches">
+                                <div ng-if="Pitch.status == 'disable'">
+                                    <button class="btn-sm btn-block">Inactiva</button>
+                                </div>
+                                <div ng-if="Pitch.status == 'free'">
+                                    <button class="btn-success btn-sm btn-block" ng-click="Reservar(Pitch.id_pitch,Pitch.starthour)">  <br /> Disponible</button>
+                                </div>
+                                <div ng-if="Pitch.status == '1' && Pitch.id_source == '1'">
+                                    <button class="btn-warning btn-sm btn-block" ng-click="VerDetalle(Pitch.id_pitch,Pitch.id_reservation,Pitch.starthour, Pitch.id_source)"><stron>{{Pitch.name}}</stron> <br /> Pendiente por confirmar</button>
+                                </div>
+                                <div ng-if="Pitch.status == '2' && Pitch.id_source == '1'">
+                                    <button class="btn-info btn-sm btn-block" ng-click="VerDetalle(Pitch.id_pitch,Pitch.id_reservation,Pitch.starthour, Pitch.id_source)"><stron>{{Pitch.name}}</stron> <br />Confirmada</button>
+                                </div>
+                                <div ng-if="Pitch.status == '5' && Pitch.id_source == '1'">
+                                    <button class="btn-primary btn-sm btn-block" ng-click="VerDetalle(Pitch.id_pitch,Pitch.id_reservation,Pitch.starthour, Pitch.id_source)"><stron>{{Pitch.name}}</stron> <br />Entregada</button>
+                                </div>
+                                <div ng-if="Pitch.status == '6' && Pitch.id_source == '1'">
+                                    <button class="btn-default btn-sm btn-block" ng-click="VerDetalle(Pitch.id_pitch,Pitch.id_reservation,Pitch.starthour, Pitch.id_source)"><stron>{{Pitch.name}}</stron> <br />Finalizada</button>
+                                </div>
+                                <div ng-if="Pitch.id_source == '2'">
+                                    <button class="btn-danger btn-sm btn-block"><stron>{{Pitch.name}}</stron> <br />Reserva Multiple</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div data-ng-hide="message == ''" class="alert alert-danger">
+                {{message}}
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="reservar" role="dialog" aria-labelledby="myModalLabel" tabindex="-1" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h2 class="modal-title text-center" id="myModalLabel"><a class="fa fa-flag-o"> </a> <strong> Vamos a hacer una reserva!</strong></h2>
+                </div>
+                <div class="modal-body">
+                    <p style="font-size:15px"><strong>NOTA:</strong> Si el usuario ya existe, por favor buscalo, de lo contrario ingresa sus datos.</p>
+                    <form name="userForm" novalidate>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <h5><a class="fa fa-user"></a> <strong>     Nombre de usuario:</strong></h5>
+                                <angucomplete-alt id="ex1"
+                                                  input-name="name"
+                                                  placeholder="Busca tu cliente"
+                                                  pause="100"
+                                                  selected-object="selectedUserOffline"
+                                                  local-data="listUsers"
+                                                  local-search="localSearch"
+                                                  title-field="name"
+                                                  description-field="phone"
+                                                  minlength="1"
+                                                  input-changed="inputChanged"
+                                                  text-searching="Estamos buscando tu cliente..."
+                                                  text-no-results="No encontramos a tu cliente registrado, ingresa los datos..."
+                                                  input-class="form-control form-control-small"
+                                                  maxlength="50"
+                                                  disable-input="disableInput" />
+                            </div>
+                            <div class="col-sm-4">
+                                <h5><a class="fa fa-eraser"></a> <strong> Oprima para corregir</strong></h5>
+                                <button class="btn-warning form-control" ng-click="clearInput()">Corregir</button>
+                            </div>
+                        </div>
+                        <div id="errorCreateUserOffline" hidden="hidden"></div>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.number.$invalid && !userForm.number.$pristine }">
+                                    <h5><a class="fa fa-phone"></a> <strong> Numero de Celular:</strong></h5>
+                                    <input ng-model="numeroCelularReserva" class="form-control" name="number" type="number" ng-maxlength="10" />
+                                </div>
+                                <p ng-show="userForm.number.$invalid && !userForm.number.$pristine" class="help-block">Debes ingresar un numero de celular valido de 10 digitos.</p>
+                            </div>
+                            <div class="col-sm-7">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+                                    <h5><a class="fa fa-envelope"></a> <strong> Correo Electronico:</strong></h5>
+                                    <input ng-model="emailReserva" name="email" class="form-control" type="email" />
+                                </div>
+                                <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Debes ingresar un correo valido.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.price.$invalid && !userForm.price.$pristine }">
+                                    <h5><a class="fa fa-money"></a> <strong> Precio:</strong></h5>
+                                    <input ng-model="priceReserva" class="form-control" name="price" type="number" ng-min="0" />
+                                </div>
+                                <p ng-show="userForm.price.$invalid && !userForm.price.$pristine" class="help-block">Debes ingresar un precio valido.</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <h5><a class="fa fa-hourglass"></a> <strong> Hora:</strong></h5>
+                                    <input ng-model="hourReserva" class="form-control" disabled="disabled" />
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <h5><a class="fa fa-calendar"></a> <strong> Fecha:</strong></h5>
+                                    <input ng-model="FechaReserva" class="form-control" disabled="disabled" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h5><a class="fa fa-eye"></a> <strong> Observaciones:</strong></h5>
+                            <input ng-model="observacionesReserva" name="observaciones" class="form-control form-control-small" type="text" ng-max="150" />
+                        </div>
+                        <input ng-model="idUser" hidden="hidden" />
+                        <input ng-model="canchaReserva" hidden="hidden" />
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" ng-click="closereserva()" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-info" ng-click="reservarcancha()" ng-disabled="validateForm()">Reservar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="VerDetalle" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h2 class="modal-title text-center" id="myModalLabel"><a class="fa fa-calendar"> </a> <strong> Detalles de la Reserva</strong></h2>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h4><a class="fa fa-futbol-o"></a><strong>   {{Cancha}}</strong></h4>
+                        </div>
+                        <div class="col-sm-9">
+                            <h4><a class="fa fa-tag"></a>   N° Reserva: <strong>{{reserva}}</strong></h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4><a class="fa fa-user"></a> Usuario: <strong>{{nombre}}</strong></h4>
+                            <h4><a class="fa fa-phone"></a> Telefono: <strong>{{celular}}</strong></h4>
+                            <h4><a class="fa fa-clock-o"></a> Hora: <strong>{{hora}}</strong></h4>
+                        </div>
+                    </div>
+                    <br />
+                    <form name="userFormView" novalidate>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label>Precio:</label>
+                                <div class="form-group" ng-class="{ 'has-error' : userFormView.price.$invalid && !userFormView.price.$pristine }">
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><a class="fa fa-money"></a></div>
+                                        <input type="number" class="form-control" id="updateValueViewReservation" ng-min="0" name="price" ng-model="ng_updateValueViewReservation">
+                                    </div>
+                                </div>
+                                <p ng-show="userFormView.price.$invalid && !userFormView.price.$pristine" class="help-block">Debes ingresar un precio valido.</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <div id="changeStatusDiv">
+                                    <label>Cambiar Estado:</label>
+                                    <select ng-change="activeChangeStatus()"
+                                            class="form-control form-control-small"
+                                            ng-model="selectedReservationStatus"
+                                            ng-options="item.id_status as item.name for item in reservationStatus">
+                                        <option value="">{{statusActual}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label>Observaciones:</label>
+                                <input type="text" class="form-control" id="updateObservationViewReservation" name="observationview" ng-model="ng_updateObservationViewReservation">
+                            </div>
+                        </div>
+                        <input ng-model="idEstadoReservacionActual" hidden="hidden"/>
+                    </form>
+                    <div class="alert alert-info" id="messageChangeStatus">{{messageChangeStatus}}</div>
+                </div>
+                <div class="modal-footer">
+                    <button id="closeDetail" type="button" ng-click="limpiarVerDetalle()" class="btn btn-info" data-dismiss="modal">Cerrar</button>
+                    <button id="saveChangeStatus" type="button" ng-click="saveStatus()" class="btn btn-success" ng-disabled="userFormView.$invalid">Guardar Estado</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include src="'app/views/foter.html'"></div>

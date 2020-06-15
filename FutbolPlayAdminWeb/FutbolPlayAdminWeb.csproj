@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{17EDE326-E9C7-4A9E-8985-62D1339F67E1}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FutbolPlayAdminWeb</RootNamespace>
+    <AssemblyName>FutbolPlayAdminWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.0</TypeScriptToolsVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\controllers\changepasswordController.js" />
+    <Content Include="app\controllers\helpController.js" />
+    <Content Include="app\controllers\notificationController.js" />
+    <Content Include="app\controllers\profileController.js" />
+    <Content Include="app\controllers\reservationmultipleController.js" />
+    <Content Include="app\controllers\schedulerController.js" />
+    <Content Include="app\controllers\cancelreservationController.js" />
+    <Content Include="app\controllers\userController.js" />
+    <Content Include="app\services\changepasswordService.js" />
+    <Content Include="app\services\notificationService.js" />
+    <Content Include="app\services\profileService.js" />
+    <Content Include="app\services\reservationmultipleService.js" />
+    <Content Include="app\services\schedulerService.js" />
+    <Content Include="app\services\cancelreservationService.js" />
+    <Content Include="app\services\reportsService.js" />
+    <Content Include="app\services\userService.js" />
+    <Content Include="app\views\change-password.html" />
+    <Content Include="app\views\foter.html" />
+    <Content Include="app\views\help.html" />
+    <Content Include="app\views\menu.html" />
+    <Content Include="app\views\password-recovery.html" />
+    <Content Include="app\views\profile.html" />
+    <Content Include="app\views\reservation-multiple.html" />
+    <Content Include="app\views\scheduler.html" />
+    <Content Include="app\views\cancel-reservation.html" />
+    <Content Include="app\views\users.html" />
+    <Content Include="content\angucomplete-alt.css" />
+    <Content Include="content\angular-bootstrap-datepicker.css" />
+    <Content Include="content\css\ng-table.min.css" />
+    <Content Include="content\datetimepicker.css" />
+    <Content Include="content\notifications.css" />
+    <Content Include="content\pnotify.custom.min.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\ng-table.min.css" />
+    <Content Include="css\style.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="images\applestore.png" />
+    <Content Include="images\ArnoldoPiloto.png" />
+    <Content Include="images\coachBalon.gif" />
+    <Content Include="images\CoachSplash-960x1600.png" />
+    <Content Include="images\flag-col.svg" />
+    <Content Include="images\flag-usa.svg" />
+    <Content Include="images\googleplay.png" />
+    <Content Include="images\HomeLogo.png" />
+    <Content Include="images\logoCoach.png" />
+    <Content Include="images\logoFiive.png" />
+    <Content Include="images\logoFiive02.png" />
+    <Content Include="images\Piloto.png" />
+    <Content Include="packages.config" />
+    <Content Include="scripts\angucomplete-alt.js" />
+    <Content Include="scripts\angular-chart.min.js" />
+    <Content Include="scripts\angular-drag-and-drop-lists.js" />
+    <Content Include="scripts\angular-drag-and-drop-lists.min.js" />
+    <Content Include="scripts\angular-sanitize.min.js" />
+    <Content Include="scripts\angular.min.js.map" />
+    <Content Include="scripts\angular-route.min.js.map" />
+    <Content Include="scripts\Chart.js" />
+    <Content Include="scripts\dateTimeInput.js" />
+    <Content Include="scripts\datetimepicker.js" />
+    <Content Include="scripts\datetimepicker.templates.js" />
+    <Content Include="scripts\jquery-2.2.4.min.map" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="less\animated.less" />
+    <Content Include="less\bordered-pulled.less" />
+    <Content Include="less\core.less" />
+    <Content Include="less\fixed-width.less" />
+    <Content Include="less\font-awesome.less" />
+    <Content Include="less\icons.less" />
+    <Content Include="less\larger.less" />
+    <Content Include="less\list.less" />
+    <Content Include="less\mixins.less" />
+    <Content Include="less\path.less" />
+    <Content Include="less\rotated-flipped.less" />
+    <Content Include="less\screen-reader.less" />
+    <Content Include="less\stacked.less" />
+    <Content Include="less\variables.less" />
+    <None Include="Properties\PublishProfiles\coachsportsplay-app - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\coachsportsplay-app - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\testcoachsportsplay-app - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\testcoachsportsplay-app - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Version Manu.pubxml" />
+    <None Include="Properties\PublishProfiles\Web Admin  - Colombia Hosting.pubxml" />
+    <None Include="Properties\PublishProfiles\Web Admin Test - Colombia Hosting.pubxml" />
+    <Content Include="scripts\locale\es.js" />
+    <Content Include="scripts\ng-csv.min.js" />
+    <Content Include="scripts\ng-table.min.js" />
+    <Content Include="scss\font-awesome.scss" />
+    <Content Include="scss\_animated.scss" />
+    <Content Include="scss\_bordered-pulled.scss" />
+    <Content Include="scss\_core.scss" />
+    <Content Include="scss\_fixed-width.scss" />
+    <Content Include="scss\_icons.scss" />
+    <Content Include="scss\_larger.scss" />
+    <Content Include="scss\_list.scss" />
+    <Content Include="scss\_mixins.scss" />
+    <Content Include="scss\_path.scss" />
+    <Content Include="scss\_rotated-flipped.scss" />
+    <Content Include="scss\_screen-reader.scss" />
+    <Content Include="scss\_stacked.scss" />
+    <Content Include="scss\_variables.scss" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\app.js" />
+    <Content Include="app\controllers\homeController.js" />
+    <Content Include="app\controllers\loginController.js" />
+    <Content Include="app\controllers\reservationController.js" />
+    <Content Include="app\services\authInterceptorService.js" />
+    <Content Include="app\services\authService.js" />
+    <Content Include="app\services\reservationService.js" />
+    <Content Include="app\views\home.html" />
+    <Content Include="app\views\login.html" />
+    <Content Include="app\views\reservation.html" />
+    <Content Include="content\bootstrap-theme.css" />
+    <Content Include="content\bootstrap-theme.min.css" />
+    <Content Include="content\bootstrap.css" />
+    <Content Include="content\bootstrap.min.css" />
+    <Content Include="content\css\globalStyles.css" />
+    <Content Include="content\css\loading-bar.css" />
+    <Content Include="content\css\loading-bar.min.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="images\favicon\android-icon-144x144.png" />
+    <Content Include="images\favicon\android-icon-192x192.png" />
+    <Content Include="images\favicon\android-icon-36x36.png" />
+    <Content Include="images\favicon\android-icon-48x48.png" />
+    <Content Include="images\favicon\android-icon-72x72.png" />
+    <Content Include="images\favicon\android-icon-96x96.png" />
+    <Content Include="images\favicon\apple-icon-114x114.png" />
+    <Content Include="images\favicon\apple-icon-120x120.png" />
+    <Content Include="images\favicon\apple-icon-144x144.png" />
+    <Content Include="images\favicon\apple-icon-152x152.png" />
+    <Content Include="images\favicon\apple-icon-180x180.png" />
+    <Content Include="images\favicon\apple-icon-57x57.png" />
+    <Content Include="images\favicon\apple-icon-60x60.png" />
+    <Content Include="images\favicon\apple-icon-72x72.png" />
+    <Content Include="images\favicon\apple-icon-76x76.png" />
+    <Content Include="images\favicon\apple-icon-precomposed.png" />
+    <Content Include="images\favicon\apple-icon.png" />
+    <Content Include="images\favicon\browserconfig.xml" />
+    <Content Include="images\favicon\favicon-16x16.png" />
+    <Content Include="images\favicon\favicon-32x32.png" />
+    <Content Include="images\favicon\favicon-96x96.png" />
+    <Content Include="images\favicon\favicon.ico" />
+    <Content Include="images\favicon\ms-icon-144x144.png" />
+    <Content Include="images\favicon\ms-icon-150x150.png" />
+    <Content Include="images\favicon\ms-icon-310x310.png" />
+    <Content Include="images\favicon\ms-icon-70x70.png" />
+    <Content Include="images\IconoArnoldoOficina.png" />
+    <Content Include="index.html" />
+    <Content Include="scripts\angular-local-storage.min.js" />
+    <Content Include="scripts\angular-mocks.js" />
+    <Content Include="scripts\angular-route.js" />
+    <Content Include="scripts\angular-route.min.js" />
+    <Content Include="scripts\angular.js" />
+    <Content Include="scripts\angular.min.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="content\bootstrap.min.css.map" />
+    <Content Include="content\bootstrap.css.map" />
+    <Content Include="content\bootstrap-theme.min.css.map" />
+    <Content Include="content\bootstrap-theme.css.map" />
+    <Content Include="scripts\bootstrap.js" />
+    <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="images\favicon\manifest.json" />
+    <None Include="scripts\jquery-2.2.4.intellisense.js" />
+    <Content Include="scripts\jquery-2.2.4.js" />
+    <Content Include="scripts\jquery-2.2.4.min.js" />
+    <Content Include="scripts\loading-bar.min.js" />
+    <Content Include="scripts\moment-timezone-utils.js" />
+    <Content Include="scripts\moment-timezone-with-data-2010-2020.js" />
+    <Content Include="scripts\moment-timezone-with-data-2010-2020.min.js" />
+    <Content Include="scripts\moment-timezone-with-data.js" />
+    <Content Include="scripts\moment-timezone-with-data.min.js" />
+    <Content Include="scripts\moment-timezone.js" />
+    <Content Include="scripts\moment-timezone.min.js" />
+    <Content Include="scripts\moment-with-langs.js" />
+    <Content Include="scripts\moment-with-langs.min.js" />
+    <Content Include="scripts\moment.js" />
+    <Content Include="scripts\moment.min.js" />
+    <Content Include="scripts\pnotify.custom.min.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51972</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51972/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
